@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>營區攻略</title>
+    <link rel="stylesheet" href="https://npmcdn.com/leaflet@0.7.7/dist/leaflet.css" />
+    <script src="https://npmcdn.com/leaflet@0.7.7/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="shortcut icon" href="./pic/commom/1017_logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="bgcColor page">
+
+    <section class="section1">
+        <div class="wrap">
+            <div class="title">營區攻略</div>
+            <div class="breadcrumbs">
+                <ul>
+                    <li><a href="./shansen.html"  class="level0 green1">首頁</a></li>
+                    <li class="level0 gray1">營區攻略</li>
+                </ul>
+            </div>
+            <div class="spot camping_block">
+                <div id="weatherbox">
+                    <div class="sub_title">尋找營區</div>
+                    <div class="weather">
+                        <div class="weathernow">
+                            <!-- 地區搜尋 -->
+                            <div class="search_area">
+                                <div class="weatherselect">
+                                    <select name="area" id="area" 
+                                    onChange="doNewMaster( document.getElementById( 'area' ), 
+                                    document.getElementById( 'campSpot' ) );">
+                                    </select>
+                                    
+                                    <select name="campSpot" id="campSpot">
+                                    </select>
+                                </div>
+                            </div>
+                                
+                            <!-- 溫度、降雨、濕度 -->
+                            <div class="infos">
+                                <div class="NowT infosbox">
+                                    <p class="title">22oC</p>
+                                    <div class="TtoT">
+                                        <span id=MinT>19oC</span>~
+                                        <span id=MaxT>23oC</span>
+                                    </div>
+                                </div>
+                                <div class="PoP infosbox">
+                                    降雨機率
+                                    <p id="PoP"></p>
+                                </div>
+                                <div class="RH infosbox">
+                                    相對溼度
+                                    <p id="RH"></p>
+                                </div>
+                            </div>
+                            <!-- 未來一周 -->
+                            <div class="weatherweek">
+                                <div class="day1 week">
+                                    <p class="day" id="date1">21</p>
+                                    <p class="temp" id="LowT">20oC</p>
+                                    <p class="temp" id="HightT">22oC</p>
+                                </div>
+                                <div class="day2 week">
+                                    <p class="day" id="date2">22</p>
+                                    <p class="temp" id="LowT">20oC</p>
+                                    <p class="temp" id="HightT">22oC</p>
+                                </div>
+                                <div class="day3 week">
+                                    <p class="day" id="date3">23</p>
+                                    <p class="temp" id="LowT">20oC</p>
+                                    <p class="temp" id="HightT">22oC</p>
+                                </div>
+                                <div class="day4 week">
+                                    <p class="day" id="date4">24</p>
+                                    <p class="temp" id="LowT">20oC</p>
+                                    <p class="temp" id="HightT">22oC</p>
+                                </div>
+                                <div class="day5 week">
+                                    <p class="day" id="date5">25</p>
+                                    <p class="temp" id="LowT">20oC</p>
+                                    <p class="temp" id="HightT">22oC</p>
+                                </div>
+                                <div class="day6 week">
+                                    <p class="day" id="date6">26</p>
+                                    <p class="temp" id="LowT">20oC</p>
+                                    <p class="temp" id="HightT">22oC</p>
+                                </div>
+                                <div class="day7 week">
+                                    <p class="day" id="date7">27</p>
+                                    <p class="temp" id="LowT">20oC</p>
+                                    <p class="temp" id="HightT">22oC</p>
+                                </div>
+                            </div>
+        
+                            </div>
+        
+                            <!-- 氣象描述 -->
+                            <div class="weatherdesc">
+                                <p id="weatherp" class="level1">陰天。降雨機率 10%。溫度攝氏22至24度。
+                                    舒適。東北風 風速2級(每秒3公尺)。相對濕度74%。</p><br>
+                                <div class="level1">更新時間：<span class="nowTime">年月日時分秒</span>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                
+                <div id="map" class="map"></div>
+            </div>
+        </div>
+    </section>
+
+    </div>
+
+
+    <script>
+        var map;
+
+        map =L.map('map', {
+                center: [ 24.926455,121.526396], // 中心點座標
+                zoom: 12, // 0 - 18
+                attributionControl: true, // 是否秀出「leaflet」的貢獻標記
+                zoomControl: true , // 是否秀出 - + 按鈕
+                });
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+
+        //建立地標
+        var marker = L.marker([ 24.926455,121.526396]);
+        marker.addTo(map);
+        marker.bindPopup("<a href=''><img src='./pic/camping/北1-1.jpg'></a><br> <a href='camping2.html'>確幸莊園</a><br>目前開團:2組");
+        
+
+        //讀取 GeoJSON，加入行政區邊界
+        // $.getJSON('https://1999.noob.tw/data/kaohsiung.json', function(r){
+        //     L.geoJSON(r, {color: '#333', weight: 0.7}).addTo(map);
+        // })
+        function onlick(){
+            $(marker).openPopup();
+        }
+
+    </script>
+
+
+    <script src="https://unpkg.com/jquery"></script>
+
+
+
+    <script>
+        //新北新店
+        let N1data;
+        $(function (N1) {
+            $.ajax({
+                type: "GET",
+                url: "https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-071?Authorization=CWB-FA772AA0-8D0C-4FEF-B569-7DE1EEF2453D&format=JSON&locationName=%E6%96%B0%E5%BA%97%E5%8D%80&elementName=MinT,MaxT,Wind,Td,PoP12h,T,RH,Wx,WeatherDescription",
+                dataType: "json",
+                error: function (e) {
+                    // console.log('oh no');
+                },
+                success: function (N1data) {
+                    // console.log(N1)
+                    N1data= N1;
+                }
+            });
+        });
+
+        //桃園大溪
+        let N2data;
+        $(function (N2) {
+            $.ajax({
+                type: "GET",
+                url: "https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-071?Authorization=CWB-FA772AA0-8D0C-4FEF-B569-7DE1EEF2453D&format=JSON&locationName=%E5%8C%97%E6%8A%95%E5%8D%80&elementName=MinT,MaxT,Wind,Td,PoP12h,T,RH,Wx,WeatherDescription",
+                dataType: "json",
+                error: function (e) {
+                    // console.log('oh no');
+                },
+                success: function (N2data) {
+                    // console.log(N1)
+                    N2data= N2;
+                }
+            });
+        });
+
+        let AreaDataArray = ["N1data", "N2data"];
+
+        function RenderWeather(AreaData){
+            // 天氣敘述
+            // $id('weatherp').innerHTML = AreaData.records.locations[0].location[0].weatherElement[5].time[0].elementValue[0].value
+            // 渲染日期 
+            // $id('date1').innerText = AreaData.records.locations[0].location[0].weatherElement[0].time[1].startTime.slice(8,10);
+            // $id('date2').innerText = AreaData.records.locations[0].location[0].weatherElement[0].time[3].startTime.slice(8,10);
+            // $id('date3').innerText = AreaData.records.locations[0].location[0].weatherElement[0].time[5].startTime.slice(8,10);
+            // $id('date4').innerText = AreaData.records.locations[0].location[0].weatherElement[0].time[7].startTime.slice(8,10);
+            // $id('date5').innerText = AreaData.records.locations[0].location[0].weatherElement[0].time[9].startTime.slice(8,10);
+            // $id('date6').innerText = AreaData.records.locations[0].location[0].weatherElement[0].time[11].startTime.slice(8,10);
+            // $id('date7').innerText = AreaData.records.locations[0].location[0].weatherElement[0].time[13].startTime.slice(8,10);
+            // 渲染早上平均溫度
+            // $id('Ttop1').innerText = AreaData.records.locations[0].location[0].weatherElement[1].time[1].elementValue[0].value + '°C'
+            // $id('Ttop2').innerText = AreaData.records.locations[0].location[0].weatherElement[1].time[3].elementValue[0].value + '°C'
+            // $id('Ttop3').innerText = AreaData.records.locations[0].location[0].weatherElement[1].time[5].elementValue[0].value + '°C'
+            // $id('Ttop4').innerText = AreaData.records.locations[0].location[0].weatherElement[1].time[7].elementValue[0].value + '°C'
+            // $id('Ttop5').innerText = AreaData.records.locations[0].location[0].weatherElement[1].time[9].elementValue[0].value + '°C'
+            // $id('Ttop6').innerText = AreaData.records.locations[0].location[0].weatherElement[1].time[11].elementValue[0].value + '°C'
+            // $id('Ttop7').innerText = AreaData.records.locations[0].location[0].weatherElement[1].time[13].elementValue[0].value + '°C'
+            // 渲染晚上平均溫度
+            // $id('Tbutton1').innerText = AreaData.records.locations[0].location[0].weatherElement[1].time[2].elementValue[0].value + '°C'
+            // $id('Tbutton2').innerText = AreaData.records.locations[0].location[0].weatherElement[1].time[4].elementValue[0].value + '°C'
+            // $id('Tbutton3').innerText = AreaData.records.locations[0].location[0].weatherElement[1].time[6].elementValue[0].value + '°C'
+            // $id('Tbutton4').innerText = AreaData.records.locations[0].location[0].weatherElement[1].time[8].elementValue[0].value + '°C'
+            // $id('Tbutton5').innerText = AreaData.records.locations[0].location[0].weatherElement[1].time[10].elementValue[0].value + '°C'
+            // $id('Tbutton6').innerText = AreaData.records.locations[0].location[0].weatherElement[1].time[12].elementValue[0].value + '°C'
+            // if (AreaData.records.locations[0].location[0].weatherElement[1].length === 15) {
+            //     $id('Tbutton7').innerText = AreaData.records.locations[0].location[0].weatherElement[1].time[14].elementValue[0].value + '°C'
+            // }   else    {
+            //     $id('Tbutton7').innerText = AreaData.records.locations[0].location[0].weatherElement[1].time[13].elementValue[0].value + '°C'
+            // }
+            // 渲染當下溫度、最低溫、最高溫、降雨機率、相對濕度
+            // $id('NowT').innerText = AreaData.records.locations[0].location[0].weatherElement[1].time[0].elementValue[0].value + '°C'
+            // $id('MinT').innerText = AreaData.records.locations[0].location[0].weatherElement[4].time[0].elementValue[0].value + '°C'
+            // $id('MaxT').innerText = AreaData.records.locations[0].location[0].weatherElement[6].time[0].elementValue[0].value + '°C'
+            $id('PoP').innerText = AreaData.records.locations[0].location[0].weatherElement[0].time[0].elementValue[0].value + '%'
+            $id('RH').innerText = AreaData.records.locations[0].location[0].weatherElement[2].time[0].elementValue[0].value + '%'
+        }
+
+    </script>
+    
+    
+    
+    <!-- 下拉式選單 -->
+    <script>
+        function doFirst(){
+        ('onload',loadMaster( document.getElementById('area'),document.getElementById('campSpot') ));
+        }
+        
+            var area = new Array();          
+            area[0] = '北部';
+            area[1] = '中部';
+            area[2] = '南部';
+            area[3] = '東部';
+        
+            var campSpot = new Array();
+            campSpot[0] = new Array();    
+            campSpot[0][0] = '確幸莊園';
+            campSpot[0][1] = '森森親子露營';
+            campSpot[0][2] = '溪口台露營區';
+            campSpot[0][3] = '綠果子休憩站';
+            campSpot[0][4] = '相思園露營區';
+            campSpot[0][5] = '紮營趣露營區';
+        
+            campSpot[1] = new Array();    
+            campSpot[1][0] = '梅林親水岸露營區';
+            campSpot[1][1] = '樹不老露營區';
+            campSpot[1][2] = '逸境生態露營區';
+            campSpot[1][3] = '倉伯露營區';
+         
+            campSpot[2] = new Array();    
+            campSpot[2][0] = '春園休閒農場';
+            campSpot[2][1] = '荖濃有機農場露營區';
+            campSpot[2][2] = '海豚茉莉灣';
+            
+            campSpot[3] = new Array();    // 日本的城市
+            campSpot[3][0] = '松蘿園林露營區';
+            campSpot[3][1] = 'Ocean Chill 海憩露營區';
+            campSpot[3][2] = '老麥農場露營區';
+        
+            // 載入 master 選單，同時初始化 detail 選單內容
+            function loadMaster( master, detail ) {
+        
+            master.options.length = area.length;
+            for( i = 0; i < area.length; i++ ) {
+            master.options[ i ] = new Option( area[i], area[i] );  // Option( text , value );
+            }
+        
+            master.selectedIndex = 0;
+            doNewMaster( master, detail );
+        }
+        
+            // 當 master 選單異動時，變更 detail 選單內容
+            function doNewMaster( master, detail ) {
+            
+            detail.options.length = campSpot[ master.selectedIndex ].length;
+            for( i = 0; i < campSpot[ master.selectedIndex ].length; i++ ) {
+            detail.options[ i ] = new Option( campSpot[ master.selectedIndex ][ i ],
+                                campSpot[ master.selectedIndex ][ i ] );
+            }
+        }
+        window.addEventListener('load',doFirst);
+    </script>
+</body>
+</html>

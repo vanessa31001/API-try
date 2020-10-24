@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>媒山友</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css//jquery.fullpage.css">
+    <link rel="stylesheet" href="./css/FrontstageIndex.css">
+    <link rel="stylesheet" href="./css/headerIndex.css">
+    <link rel="icon" href="./images/icons/g01_logo.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="./images/icons/g01_logo.png" type="image/x-icon" />
+    <script src="./js/axios.min.js"></script>
+    <!-- <script src="./js/vue.js"></script> -->
+    <script src="./js/vue.min.js"></script>
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/popper.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/jquery.fullpage.js"></script>
+</head>
+<body>
+
+
+    
+    <header> 
+
+        <div id="headerbox">
+
+            <div id="greymask"></div>
+            <div id="hamburgerBG">
+                <div class="ab white"></div>
+
+                <div class="ab blue"><p>Copyright © 2020 Mountain Community.</p></div>
+            </div>
+
+
+
+            <nav class="menu">
+                <ul class="logo">
+                    <li><a class="menuLogo" href="./Frontstageindex.html"><img class="menuLogo" src="./images/logo/LOGO_black.png" ></a></li>
+                </ul>
+                <ul class=ybg>
+                    <li class="y1"><div></div></li>
+                    <li class="y2"><div></div></li>
+                    <li class="y3"><div></div></li>
+                </ul>
+                <ul class="link_list llleft">
+                    <li><a class="tour" href="./meet2-0.html"><div class="ybg y1"></div><p>揪團區</p></a></li>
+                    <li><a class="forum" href="./forum.html"><div class="ybg y2"></div><p>討論區</p></a></li>
+                    <li><a class="product" href="./product.html"><div class="ybg y3"></div><p>商品區</p></a></li>
+                </ul>
+                <ul class="link_list llmiddle">
+                    <li><a class="member" id="member_jumpTo"><div class="memicon" style="cursor: pointer;"><div class="membg"></div></div></a></li>
+                    <li><a class="cart" href="./shoppingcart.html"><div class="carticon"><span class="add_count_others"></span><div class="cartbg"></div></div></a></li>
+                    <span class="add_count_others"></span>
+                </ul>
+                <ul class="link_list llright">
+                    <li class="b">服務地點<br>
+                        320桃園市中壢區中大路300號<br>
+                        工程二館 資策會大樓<br><br></li>
+                        
+                    <li class="b">服務時間<br>
+                    週一至週五10:00~17:00<br><br></li>
+                        
+                    <li class="b">連絡電話<br>
+                        (03)425-7387<br><br></li>
+                        
+                    <li class="b">服務信箱<br>
+                    tibame@gmail.com</li><br>
+                    <li><a class="linkOut" href="https://www.cwb.gov.tw/V8/C/ "> 中央氣象局</a></li>｜
+                    <li><a class="linkOut" href="https://npm.cpami.gov.tw/ "> 登山證申請</a></li>｜
+                    <li><a class="linkOut" href="#"> 網站快速導覽 </a></li>｜
+                    <li><a class="linkOut" href="#"> 服務條款及隱私權政策</a></li>｜
+                    <li><a class="linkOut" href="#"> 會員使用條款</a></li>
+                </ul>
+            </nav>
+
+            <button class="hamburger hamburger--collapse" type="button">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </button>
+            <div style="display: none !important;" id="mem_info_id"></div>
+        </div>
+
+    </header>
+
+
+
+    <div class="bg">
+        <div class="bgbox scenefade scenefade2">
+            <img src="./images/index/noon/sky.png" alt="">
+        </div>
+        <div class="bgbox mountainmiddlefade mountainmiddlefade2">
+            <img src="./images/index/noon/mountain2.png" alt="">
+        </div>
+        <div class="bgbox mountainfirstfade mountainfirstfade2">
+            <img src="./images/index/noon/mountain1.png" alt="">
+        </div>
+        <div class="bgbox scenefade scenefade1">
+            <img src="./images/index/morning/sky.png" alt="">
+        </div>
+        <div class="bgbox mountainmiddlefade mountainmiddlefade1">
+            <img src="./images/index/morning/s1_mountain2-2.png" alt="">
+        </div>
+        <div class="bgbox mountainfirstfade mountainfirstfade1">
+            <img src="./images/index/morning/mountain1.png" alt="">
+        </div>
+        <div class="bgbox scene r">
+            <img src="#" alt="">
+        </div>
+        <div class="bgbox mountainmiddle r">
+            <img src="#" alt="">
+        </div>
+        <div class="bgbox mountainfirst r">
+            <img src="#" alt="">
+        </div>
+    </div>
+    <div id="fullpage">
+
+
+        <div id="section1" class="section section1">
+            <div id="sec1box">
+                <div id="logocloudbox">
+                    <img src="./images/index/pg1/logocloud.png" alt="" id="logocloud">
+                </div>
+                <div id="whitemask"></div>
+                <div id="zero">
+                    <div class="SVGbox" id="SVGthoughts"><img src="./images/index/pg1/Thoughts.svg" alt=""></div>
+                    <div class="SVGbox SVGqes" id="SVGqes1"><img class="init" src="./images/index/pg1/Qes1.svg" alt=""></div>
+                    <div class="SVGbox SVGqes" id="SVGqes2"><img class="init" src="./images/index/pg1/Qes2.svg" alt=""></div>
+                    <div class="SVGbox SVGqes" id="SVGqes3"><img class="init" src="./images/index/pg1/Qes3.svg" alt=""></div>
+                </div>
+                <div id="SVGans">
+                    <div id="one">
+                        <div class="SVGbox" id="SVGans1"><img src="./images/index/pg1/Ans1.svg" alt=""></div>
+                        <div class="SVGbox" id="SVGtour"><img src="./images/index/pg1/tour.svg" alt=""></div>
+                    </div>
+                    <div id="two">    
+                        <div class="SVGbox" id="SVGans2"><img src="./images/index/pg1/Ans2.svg" alt=""></div>
+                        <div class="SVGbox" id="SVGforum"><img src="./images/index/pg1/forum.svg" alt=""></div>
+                    </div>
+                    <div id="three">
+                        <div class="SVGbox" id="SVGans3"><img src="./images/index/pg1/Ans3.svg" alt=""></div>
+                        <div class="SVGbox" id="SVGproduct"><img src="./images/index/pg1/product.svg" alt=""></div>
+                    </div>
+                </div>
+                <div id="Leftbox">
+                    <div class="SVGbox SVGopt" id="SVGopt1"><img class="second" src="./images/index/pg1/Qes1.svg" alt=""></div>
+                    <div class="SVGbox SVGopt" id="SVGopt2"><img class="second" src="./images/index/pg1/Qes2.svg" alt=""></div>
+                    <div class="SVGbox SVGopt" id="SVGopt3"><img class="second" src="./images/index/pg1/Qes3.svg" alt=""></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="section2" class="section section2">
+            <div id="sec2box">
+                <button id="OPENweather" @click="OPENweather">天<br>氣<br>預<br>報</button>
+                <div id="weatherbox">
+                    <div class="weather">
+                        <div class="weathernow">
+                            <div class="top">
+                                <div class="text_area">
+                                  <div class="infos">
+                                    <p id="NowT"></p>
+                                    <div id="TtoT">
+                                        <span id="MinT"></span>&nbsp~&nbsp<span id="MaxT"></span>
+                                    </div>
+                                    <div class="PoP">降雨機率<p id="PoP"></p></div>
+                                    <div class="RH">相對濕度<p id="RH"></p></div>
+                                  </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="weatherweek">
+                            <div class="next next1">
+                                <p class="date" id="date1"></p>
+                                <p class="TopT" id="Ttop1"></p>
+                                <p class="ButtonT" id="Tbutton1"></p>
+                            </div>
+                            <div class="next next2">
+                                <p class="date" id="date2"></p>
+                                <p class="TopT" id="Ttop2"></p>
+                                <p class="ButtonT" id="Tbutton2"></p>
+                            </div>
+                            <div class="next next3">
+                                <p class="date" id="date3"></p>
+                                <p class="TopT" id="Ttop3"></p>
+                                <p class="ButtonT" id="Tbutton3"></p>
+                            </div>
+                            <div class="next next4">
+                                <p class="date" id="date4"></p>
+                                <p class="TopT" id="Ttop4"></p>
+                                <p class="ButtonT" id="Tbutton4"></p>
+                            </div>
+                            <div class="next next5">
+                                <p class="date" id="date5"></p>
+                                <p class="TopT" id="Ttop5"></p>
+                                <p class="ButtonT" id="Tbutton5"></p>
+                            </div>
+                            <div class="next next6">
+                                <p class="date" id="date6"></p>
+                                <p class="TopT" id="Ttop6"></p>
+                                <p class="ButtonT" id="Tbutton6"></p>
+                            </div>
+                            <div class="next next7">
+                                <p class="date" id="date7"></p>
+                                <p class="TopT" id="Ttop7"></p>
+                                <p class="ButtonT" id="Tbutton7"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="weatherselect">
+                        <div class="dropdown area">
+                            <button class="btn btn-secondary dropdown-toggle btnarea" type="button" id="dropdownAreaButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="北部">
+                              北部
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" id="N" value="北部">北部</a>
+                              <a class="dropdown-item" id="W" value="中部">中部</a>
+                              <a class="dropdown-item" id="S" value="南部">南部</a>
+                              <a class="dropdown-item" id="E" value="東部">東部</a>
+                            </div>
+                        </div>
+                        <div class="dropdown mountain">
+                            <button class="btn btn-secondary dropdown-toggle btnmountain" type="button" id="dropdownMountainButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                              塔曼山
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" >塔曼山</a>
+                              <a class="dropdown-item" >七星山</a>
+                              <a class="dropdown-item" >雪白山</a>
+                              <a class="dropdown-item" >大霸尖山</a>
+                            </div>
+                        </div>
+                          
+                    </div>
+                    <div class="weatherdesc">
+                        <p id="weatherp"></p>
+                    </div>
+                </div>
+                <div id="tourbox">
+                        <div id="toursearchbar"></div>
+                        <div id="tourhotbox">
+                            <article class="tourinforbox" v-for="(t1 , index , mountain_area) in Tour1">
+                                <a :href="'./meet2-3.html?tour_no='+t1.tour_no">
+                                <p class="top">TOP{{index +1}}</p>
+                                <div class="tourimg">
+                                    <img :src="t1.mountain_image" alt="">
+                                    <div class="tourmtinfor">
+                                        {{t1.mountain_area | Area}} - {{t1.mountain_name}} - <div class="degreeImg" v-html="Degree(t1.degree_category)"></div>
+                                    </div>
+                                </div>
+
+                                <div class="member_styleA row">
+                                    <div class="memberImg">
+                                        <img :src="t1.mem_avator" alt="">
+                                    </div>
+                                    <div class="memberInfo">
+                                        <div class="certification">
+                                            <span class="certificationIcon a"><img src="./images/icons/icon_realname.svg" alt=""><div class="icon_hover" style="color: #555555 !important;">已通過實名認證</div></span>
+                                            <span class="certificationIcon b"><img src="./images/icons/icon_guide.svg" alt=""><div class="icon_hover" style="color: #555555 !important;">已通過專業嚮導認證</div></span>
+                                        </div>
+                                        <div class="memberId">{{t1.mem_id}}</div>
+                                        <div class="memberBadge">
+                                            <span class="memberBadgeIcon">
+                                                <img :src="t1.badge1" alt="">
+                                            </span>
+                                            <span class="memberBadgeIcon">
+                                                <img :src="t1.badge2" alt="">
+                                            </span>
+                                            <span class="memberBadgeIcon">
+                                                <img :src="t1.badge3" alt="">
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tourtitle">
+                                    <h3>{{t1.tour_title}}</h3>
+                                    <span>{{t1.tour_activitystart}} ~ {{t1.tour_activityend}}</span>
+                                    <div><p class="innertext">{{t1.tour_innertext}}</p></div>
+                                </div>
+                                </a>
+                            </article>
+                            <article class="tourinforbox" v-for="(t23 , index) in Tour23" >
+                                <a :href="'./meet2-3.html?tour_no='+t23.tour_no">
+                                <p class="top">TOP{{index +2}}</p>
+                                <div class="tourimg">
+                                    <img :src="t23.mountain_image" alt="">
+                                    <div class="tourmtinfor">
+                                        {{t23.mountain_area | Area}} - {{t23.mountain_name}} - <div class="degreeImg" v-html="Degree(t23.degree_category)"></div>
+                                    </div>
+                                </div>
+                                <div class="tourtitle">
+                                    <h3>{{t23.tour_title}}</h3>
+                                    <span>{{t23.tour_activitystart}} ~ {{t23.tour_activityend}}</span>
+                                </div>
+                                </a>
+                            </article>
+                        </div>
+                </div>
+                
+            </div>
+
+        </div>
+
+
+
+
+        
+        <div id="section3" class="section section3">
+
+            <div class="slide" data-anchor="slide1">
+                <div id="sec3-1box">
+                    <div class="innerboxleft" @click="gotoFORUM">
+                        <div class="bigpic">
+                            <img src="" alt="">
+                            <div><p></p></div>
+                        </div>
+                        <div class="theinfor">
+                            <div class="member_styleA row">
+                                <div class="memberImg">
+                                    <img src="" alt="">
+                                </div>
+                                <div class="memberInfo">
+                                    <div class="certification">
+                                        <span class="certificationIcon a"><img src="./images/icons/icon_realname.svg" alt=""><div class="icon_hover" style="color: #555555 !important;">已通過實名認證</div></span>
+                                        <span class="certificationIcon b"><img src="./images/icons/icon_guide.svg" alt=""><div class="icon_hover" style="color: #555555 !important;">已通過專業嚮導認證</div></span>
+                                    </div>
+                                    <div class="memberId"></div>
+                                    <div class="memberBadge">
+                                        <span class="memberBadgeIcon">
+                                            <img src="" alt="">
+                                        </span>
+                                        <span class="memberBadgeIcon">
+                                            <img src="" alt="">
+                                        </span>
+                                        <span class="memberBadgeIcon">
+                                            <img src="" alt="">
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="forumtitle"><h3></h3><span></span></div>
+                        </div>
+                        <div class="forumtext"><p></p></div>
+                        <div class="sub">
+                            <div class="keepicon"><img src="./images/icons/icon_heart_gray.svg" alt=""></div>
+                            <div><p></p></div>
+                            <div class="replyicon"><img src="./images/icons/icon_message_gray.svg" alt=""></div>
+                            <div><p></p><span>最後回覆於 : </span></div>
+                        </div>
+                    </div>
+                    <div class="innerboxright">
+                        <div class="smallbox" v-for="(fh,index) in ForumHot" :class="{'-active': index === 0 }" ref="smallbox">
+                            <p class="top">HOT{{index +1}}</p>
+                            <div class="smallpic">
+                                <img :src="fh.forum_post_image" alt="">
+                                <div><p >{{fh.forum_post_category}}</p></div>
+                            </div>
+                            <div class="graymask" v-on:click="toggleActive"  >
+                                <h3 v-on:click="toggleActiveP">{{fh.forum_post_title}}</h3>
+                            </div>
+                            <input class="TEMPforum_post_no" type="hidden" :value="fh.forum_post_no">
+                            <input class="TEMPforum_post_title" type="hidden" :value="fh.forum_post_title">
+                            <input class="TEMPforum_post_category" type="hidden" :value="fh.forum_post_category">
+                            <input class="TEMPforum_post_innertext" type="hidden" :value="fh.forum_post_innertext">
+                            <input class="TEMPforum_post_image" type="hidden" :value="fh.forum_post_image">
+                            <input class="TEMPforum_post_time" type="hidden" :value="fh.forum_post_time">
+                            <input class="TEMPmem_avator" type="hidden" :value="fh.mem_avator">
+                            <input class="TEMPmem_id" type="hidden" :value="fh.mem_id">
+                            <input class="TEMPmem_badge1" type="hidden" :value="fh.badge1">
+                            <input class="TEMPmem_badge2" type="hidden" :value="fh.badge2">
+                            <input class="TEMPmem_badge3" type="hidden" :value="fh.badge3">
+                            <input class="TEMPguide_no" type="hidden" :value="fh.guide_no">
+                            <input class="TEMPmem_realname" type="hidden" :value="fh.mem_realname">
+                            <input class="TEMPforum_reply" type="hidden" :value="fh.NUMreply">
+                            <input class="TEMPforum_keep" type="hidden" :value="fh.NUMkeep">
+                            <input class="TEMPforum_replytime" type="hidden" :value="fh.replytime">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            
+            <div class="slide" data-anchor="slide2">
+                <div id="sec3-2box">
+                    <div class="innerboxleft" @click="gotoFORUM">
+                        <div class="bigpic">
+                            <img src="" alt="">
+                            <div><p></p></div>
+                        </div>
+                        <div class="theinfor">
+                            <div class="member_styleA row">
+                                <div class="memberImg">
+                                    <img src="" alt="">
+                                </div>
+                                <div class="memberInfo">
+                                    <div class="certification">
+                                        <span class="certificationIcon a"><img src="./images/icons/icon_realname.svg" alt=""><div class="icon_hover" style="color: #555555 !important;">已通過實名認證</div></span>
+                                        <span class="certificationIcon b"><img src="./images/icons/icon_guide.svg" alt=""><div class="icon_hover" style="color: #555555 !important;">已通過專業嚮導認證</div></span>
+                                    </div>
+                                    <div class="memberId"></div>
+                                    <div class="memberBadge">
+                                        <span class="memberBadgeIcon">
+                                            <img src="" alt="">
+                                        </span>
+                                        <span class="memberBadgeIcon">
+                                            <img src="" alt="">
+                                        </span>
+                                        <span class="memberBadgeIcon">
+                                            <img src="" alt="">
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="forumtitle"><h3></h3><span></span></div>
+                        </div>
+                        <div class="forumtext"><p></p></div>
+                        <div class="sub">
+                            <div class="keepicon"><img src="./images/icons/icon_heart_gray.svg" alt=""></div>
+                            <div><p></p></div>
+                            <div class="replyicon"><img src="./images/icons/icon_message_gray.svg" alt=""></div>
+                            <div><p></p><span>最後回覆於 : </span></div>
+                        </div>
+                    </div>
+                    <div class="innerboxright">
+                        <div class="smallbox" v-for="(fn,index) in ForumNew" :class="{'-active': index === 0 }" ref="smallbox">
+                            <p class="top">NEW{{index +1}}</p>
+                            <div class="smallpic">
+                                <img :src="fn.forum_post_image" alt="">
+                                <div><p >{{fn.forum_post_category}}</p></div>
+                            </div>
+                            <div class="graymask" v-on:click="toggleActive"  >
+                                <h3 v-on:click="toggleActiveP">{{fn.forum_post_title}}</h3>
+                            </div>
+                            <input class="TEMPforum_post_no" type="hidden" :value="fn.forum_post_no">
+                            <input class="TEMPforum_post_title" type="hidden" :value="fn.forum_post_title">
+                            <input class="TEMPforum_post_category" type="hidden" :value="fn.forum_post_category">
+                            <input class="TEMPforum_post_innertext" type="hidden" :value="fn.forum_post_innertext">
+                            <input class="TEMPforum_post_image" type="hidden" :value="fn.forum_post_image">
+                            <input class="TEMPforum_post_time" type="hidden" :value="fn.forum_post_time">
+                            <input class="TEMPmem_avator" type="hidden" :value="fn.mem_avator">
+                            <input class="TEMPmem_id" type="hidden" :value="fn.mem_id">
+                            <input class="TEMPmem_badge1" type="hidden" :value="fn.badge1">
+                            <input class="TEMPmem_badge2" type="hidden" :value="fn.badge2">
+                            <input class="TEMPmem_badge3" type="hidden" :value="fn.badge3">
+                            <input class="TEMPguide_no" type="hidden" :value="fn.guide_no">
+                            <input class="TEMPmem_realname" type="hidden" :value="fn.mem_realname">
+                            <input class="TEMPforum_reply" type="hidden" :value="fn.NUMreply">
+                            <input class="TEMPforum_keep" type="hidden" :value="fn.NUMkeep">
+                            <input class="TEMPforum_replytime" type="hidden" :value="fn.replytime">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        
+        <div id="section4" class="section section4">
+            <div id="sec4box">
+                <div class="boxbig" v-for="(p,index) in Product.slice(0, 1)">
+                    <p class="top">BEST</p>
+                    <div class="picbig">
+                        <!-- <div class="top"> 
+                            <div><h3> TOP {{index+1}} </h3></div>
+                            <p>已售出 {{p.銷售數量}}個</p>
+                        </div> -->
+                        <div class="circlebig"></div>
+                        <div class="propicbig"><img :src="p.product_image1" alt=""></div>
+                        <div class="btngo" @click="gotoPRODUCT"><button class="btnA_XLwRA"><p>詳細資訊</p><div class="btnArrowXL"></div></button></div>
+                    </div>
+                    <div class="prodesc">
+                        <div class="protitle"><h3>{{p.product_name}}</h3></div>
+                        <div class="prosubtitle"><p>{{p.product_description}}</p></div>
+                        <div class="proprice"><p>${{p.product_price}}</p></div>
+                    </div>
+                    <input class="proNO" type="hidden" :value="p.product_no">
+                    <input class="proNAME" type="hidden" :value="p.product_name">
+                    <input class="proIMG" type="hidden" :value="p.product_image1">
+                    <input class="proPRICE" type="hidden" :value="p.product_price">
+                    <input class="proDESC" type="hidden" :value="p.product_description">
+                    <input class="proSOLD" type="hidden" :value="p.銷售數量">
+                </div>
+                <div class="smalls">
+                    <div class="boxsmall" v-for="(p,index) in Product.slice(1, 4)">
+                        <div class="circlesmall"></div>
+                        <div class="propicsmall"><img :src="p.product_image1" @click="ExchangePRO" alt=""></div>
+                        <div class="protitle"><p @click="ExchangePRO" >{{p.product_name}}</p></div>
+                        <input class="proNO" type="hidden" :value="p.product_no">
+                        <input class="proNAME" type="hidden" :value="p.product_name">
+                        <input class="proIMG" type="hidden" :value="p.product_image1">
+                        <input class="proPRICE" type="hidden" :value="p.product_price">
+                        <input class="proDESC" type="hidden" :value="p.product_description">
+                        <input class="proSOLD" type="hidden" :value="p.銷售數量">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+    </div>
+
+
+
+
+    <script>
+        var $hamburger = $(".hamburger");
+        $hamburger.on("click", function(e) {
+            $hamburger.toggleClass("is-active");
+            $("#hamburgerBG").toggleClass("on");
+            $(".menu").toggleClass("on")
+            $(".link_list").toggleClass("on");
+            $("#greymask").toggleClass("on");
+            setTimeout(function(){
+                $("#greymask").toggleClass("show");
+            },100)
+            setTimeout(function(){
+                $("#hamburgerBG").toggleClass("show");
+            },150)
+            setTimeout(function(){
+                $(".menu").toggleClass("show");
+            },200)
+        });
+        $("#greymask").on("click", function(e) {
+            $hamburger.toggleClass("is-active");
+            $("#hamburgerBG").toggleClass("on");
+            $("nav.menu").toggleClass("on")
+            $(".link_list").toggleClass("on");
+            $("#greymask").toggleClass("on");
+            setTimeout(function(){
+                $("#greymask").toggleClass("show");
+            },100)
+            setTimeout(function(){
+                $("#hamburgerBG").toggleClass("show");
+            },100)
+            setTimeout(function(){
+                $(".menu").toggleClass("show");
+            },200)
+        });
+        $("#hamburgerBG").on("click", function(e) {
+            $hamburger.toggleClass("is-active");
+            $("#hamburgerBG").toggleClass("on");
+            $("nav.menu").toggleClass("on")
+            $(".link_list").toggleClass("on");
+            $("#greymask").toggleClass("on");
+            setTimeout(function(){
+                $("#greymask").toggleClass("show");
+            },100)
+            setTimeout(function(){
+                $("#hamburgerBG").toggleClass("show");
+            },100)
+            setTimeout(function(){
+                $(".menu").toggleClass("show");
+            },200)
+        });
+    </script>
+
+    <script>
+        $("a.tour").hover(function(){
+            $("li.y1 div").css("opacity","0.9");
+        },function(){
+            $("li.y1 div").css("opacity","0");
+        });
+        $("a.forum").hover(function(){
+            $("li.y2 div").css("opacity","0.9");
+        },function(){
+            $("li.y2 div").css("opacity","0");
+        });
+        $("a.product").hover(function(){
+            $("li.y3 div").css("opacity","0.9");
+        },function(){
+            $("li.y3 div").css("opacity","0");
+        });
+    </script>
+
+    <script>
+
+        let vTour = new Vue({
+            el: "#sec2box",
+            data: {
+                Tour1: [],
+                Tour23: [],
+            },
+            created() {
+                axios.get('./phpForConnect/frontstageindexTour1.php').then(res => {
+                this.Tour1 = res.data; 
+                })
+                axios.get('./phpForConnect/frontstageindexTour23.php').then(res => {
+                this.Tour23 = res.data; 
+                })
+            },
+            filters: {
+                // var mountain_area = this.Tour1.mountain_area;
+                Area: function(value) {
+                    switch(value){
+                        case('north'):
+                            return '北部';
+                        break;
+                        case('west'):
+                            return '中部';
+                        break;
+                        case('south'):
+                            return '南部';
+                        break;
+                        case('east'):
+                            return '東部';
+                        break;
+                        default:
+                            return '沒成功哦';
+                        break;
+                    }
+                },
+            },
+            methods: {
+                Degree(value) {
+                    switch(value){
+                        case('1'):
+                            return '<div class="iconBox"><img src="./images/icons/icon_mountain.svg" alt="" class="iconDegree"></div><div class="iconBox"><img src="./images/icons/icon_mountain_a.svg" alt="" class="iconDegree"></div><div class="iconBox"><img src="./images/icons/icon_mountain_a.svg" alt="" class="iconDegree"></div><div class="iconBox"><img src="./images/icons/icon_mountain_a.svg" alt="" class="iconDegree"></div>';
+                        break;
+                        case('2'):
+                            return '<div class="iconBox"><img src="./images/icons/icon_mountain.svg" alt="" class="iconDegree"></div><div class="iconBox"><img src="./images/icons/icon_mountain.svg" alt="" class="iconDegree"></div><div class="iconBox"><img src="./images/icons/icon_mountain_a.svg" alt="" class="iconDegree"></div><div class="iconBox"><img src="./images/icons/icon_mountain_a.svg" alt="" class="iconDegree"></div>';
+                        break;
+                        case('3'):
+                            return '<div class="iconBox"><img src="./images/icons/icon_mountain.svg" alt="" class="iconDegree"></div><div class="iconBox"><img src="./images/icons/icon_mountain.svg" alt="" class="iconDegree"></div><div class="iconBox"><img src="./images/icons/icon_mountain.svg" alt="" class="iconDegree"></div><div class="iconBox"><img src="./images/icons/icon_mountain_a.svg" alt="" class="iconDegree"></div>';
+                        break;
+                        case('4'):
+                            return '<div class="iconBox"><img src="./images/icons/icon_mountain.svg" alt="" class="iconDegree"></div><div class="iconBox"><img src="./images/icons/icon_mountain.svg" alt="" class="iconDegree"></div><div class="iconBox"><img src="./images/icons/icon_mountain.svg" alt="" class="iconDegree"></div><div class="iconBox"><img src="./images/icons/icon_mountain.svg" alt="" class="iconDegree"></div>';
+                        break;
+                        default:
+                            return '應該很難';
+                        break;
+                    }
+                },
+                OPENweather: function(){
+                    if($('#OPENweather').hasClass('on')) {
+                        $("#OPENweather").removeClass('on');
+                        $("#weatherbox").removeClass('on')
+                    }   else    {
+                        $("#OPENweather").addClass('on');
+                        $("#weatherbox").addClass('on')
+                    }
+                }
+                
+                    // $(document).ready(
+                    // );
+            },
+            computed: {
+                CHECKname() {
+                    return this.Tour1[0].mem_realname;
+                },
+                CHECKguide() {
+                    return this.Tour1[0].guide_no;
+                },
+            },
+            updated(){
+                let IMGarray = $(".memberImg img")
+                setTimeout(function(){
+                    for(var t=0 ; t<IMGarray.length ; t++){
+                if(IMGarray.eq(t).width() > IMGarray.eq(t).height() || isNaN(IMGarray.eq(t).width()) || isNaN(IMGarray.eq(t).height())){
+                            IMGarray.eq(t).addClass('wide')
+                        }   else    {
+                            IMGarray.eq(t).addClass('tall')
+                        }
+                    }
+                },200)
+            }
+        });
+        let vForumHot = new Vue({
+            el: "#sec3-1box",
+            data: {
+                ForumHot: [],
+            },
+            created() {
+                axios.get('./phpForConnect/frontstageindexForumHot.php').then(res => {
+                this.ForumHot = res.data; 
+                })
+            },
+            methods: {
+            toggleActive: function(e) {
+                $(e.target.parentNode).siblings().removeClass("-active")
+                $(e.target.parentNode).addClass("-active")
+                this.renderForumData();
+                this.CHECKIMG();
+            },
+            toggleActiveP: function(e) {
+                $(e.target.parentNode.parentNode).siblings().removeClass("-active")
+                $(e.target.parentNode.parentNode).addClass("-active")
+                this.renderForumData();
+                this.CHECKIMG();
+            },
+            renderForumData: function(){
+                //抓值
+                var TEMPforum_post_image = $("#sec3-1box .innerboxright .-active .TEMPforum_post_image").val();
+                var TEMPmem_avator = $("#sec3-1box .innerboxright .-active .TEMPmem_avator").val();
+                var TEMPforum_post_innertext = $("#sec3-1box .innerboxright .-active .TEMPforum_post_innertext").val();
+                var TEMPforum_post_category = $("#sec3-1box .innerboxright .-active .TEMPforum_post_category").val();
+                var TEMPforum_post_title = $("#sec3-1box .innerboxright .-active .TEMPforum_post_title").val();
+                var TEMPforum_post_time = $("#sec3-1box .innerboxright .-active .TEMPforum_post_time").val();
+                var TEMPguide_no = $("#sec3-1box .innerboxright .-active .TEMPguide_no").val();
+                var TEMPmem_realname = $("#sec3-1box .innerboxright .-active .TEMPmem_realname").val();
+                var TEMPmem_id = $("#sec3-1box .innerboxright .-active .TEMPmem_id").val();
+                var TEMPmem_badge1 = $("#sec3-1box .innerboxright .-active .TEMPmem_badge1").val();
+                var TEMPmem_badge2 = $("#sec3-1box .innerboxright .-active .TEMPmem_badge2").val();
+                var TEMPmem_badge3 = $("#sec3-1box .innerboxright .-active .TEMPmem_badge3").val();
+                var TEMPforum_reply = $("#sec3-1box .innerboxright .-active .TEMPforum_reply").val();
+                var TEMPforum_keep = $("#sec3-1box .innerboxright .-active .TEMPforum_keep").val();
+                var TEMPforum_replytime = $("#sec3-1box .innerboxright .-active .TEMPforum_replytime").val();
+                //渲染
+                $("#sec3-1box .innerboxleft .bigpic img").attr('src',TEMPforum_post_image)
+                $("#sec3-1box .innerboxleft .bigpic div p").text(TEMPforum_post_category)
+                $("#sec3-1box .innerboxleft .theinfor .member_styleA .memberImg img").attr('src',TEMPmem_avator)
+                if (TEMPmem_realname){
+                    $("#sec3-1box .innerboxleft .theinfor .member_styleA .memberInfo .certification .a").show();
+                }   else    {
+                    $("#sec3-1box .innerboxleft .theinfor .member_styleA .memberInfo .certification .a").hide();
+                }
+                if (TEMPguide_no){
+                    $("#sec3-1box .innerboxleft .theinfor .member_styleA .memberInfo .certification .b").show();
+                }   else    {
+                    $("#sec3-1box .innerboxleft .theinfor .member_styleA .memberInfo .certification .b").hide();
+                }
+                $("#sec3-1box .innerboxleft .theinfor .member_styleA .memberInfo .memberId").text(TEMPmem_id)
+                $("#sec3-1box .innerboxleft .theinfor .member_styleA .memberInfo .memberBadge .memberBadgeIcon").eq(0).find("img").attr('src',TEMPmem_badge1)
+                $("#sec3-1box .innerboxleft .theinfor .member_styleA .memberInfo .memberBadge .memberBadgeIcon").eq(1).find("img").attr('src',TEMPmem_badge2)
+                $("#sec3-1box .innerboxleft .theinfor .member_styleA .memberInfo .memberBadge .memberBadgeIcon").eq(2).find("img").attr('src',TEMPmem_badge3)
+                $("#sec3-1box .innerboxleft .theinfor .forumtitle h3").text(TEMPforum_post_title)
+                $("#sec3-1box .innerboxleft .theinfor .forumtitle span").text(TEMPforum_post_time)
+                $("#sec3-1box .innerboxleft .forumtext p").text(TEMPforum_post_innertext)
+                // console.log('**below**memINFO**')
+                // console.log(TEMPguide_no)
+                // console.log(TEMPmem_realname)
+                // console.log('**above**memINFO**')
+                $("#sec3-1box .innerboxleft .sub .keepicon + div p").text(TEMPforum_keep)
+                $("#sec3-1box .innerboxleft .sub .replyicon + div p").text(TEMPforum_reply)
+                $("#sec3-1box .innerboxleft .sub .replyicon + div span").text(`最後回覆於${TEMPforum_replytime}`)
+                },
+                gotoFORUM: function(){
+                    location.href=`./forum-comment.html?forum_post_no=${$("#sec3-1box .innerboxright .-active .TEMPforum_post_no").val()}`
+                },
+                CHECKIMG: function(){
+
+                let IMGarray = $(".memberImg img")
+                    for(var t=0 ; t<IMGarray.length ; t++){
+                if(IMGarray.eq(t).width() > IMGarray.eq(t).height() || isNaN(IMGarray.eq(t).width()) || isNaN(IMGarray.eq(t).height())){
+                            IMGarray.eq(t).addClass('wide')
+                            IMGarray.eq(t).removeClass('tall')
+                        }   else    {
+                            IMGarray.eq(t).addClass('tall')
+                            IMGarray.eq(t).removeClass('wide')
+                        }
+                    }
+                }
+            },
+            updated() {
+                this.renderForumData();
+
+                let IMGarray = $(".memberImg img")
+                setTimeout(function(){
+                    for(var t=0 ; t<IMGarray.length ; t++){
+                        if(IMGarray.eq(t).width() > IMGarray.eq(t).height()){
+                            IMGarray.eq(t).addClass('wide')
+                        }   else    {
+                            IMGarray.eq(t).addClass('tall')
+                        }
+                    }
+                },200)
+            },
+        });
+        let vForumNew = new Vue({
+            el: "#sec3-2box",
+            data: {
+                ForumNew: [],
+            },
+            created() {
+                axios.get('./phpForConnect/frontstageindexForumNew.php').then(res => {
+                this.ForumNew = res.data; 
+                })
+            },
+            methods: {
+            toggleActive: function(e) {
+                $(e.target.parentNode).siblings().removeClass("-active")
+                $(e.target.parentNode).addClass("-active")
+                this.renderForumData();
+                this.CHECKIMG();
+            },
+            toggleActiveP: function(e) {
+                $(e.target.parentNode.parentNode).siblings().removeClass("-active")
+                $(e.target.parentNode.parentNode).addClass("-active")
+                this.renderForumData();
+                this.CHECKIMG();
+            },
+            renderForumData: function(){
+                //抓值
+                var TEMPforum_post_image = $("#sec3-2box .innerboxright .-active .TEMPforum_post_image").val();
+                var TEMPmem_avator = $("#sec3-2box .innerboxright .-active .TEMPmem_avator").val();
+                var TEMPforum_post_innertext = $("#sec3-2box .innerboxright .-active .TEMPforum_post_innertext").val();
+                var TEMPforum_post_category = $("#sec3-2box .innerboxright .-active .TEMPforum_post_category").val();
+                var TEMPforum_post_title = $("#sec3-2box .innerboxright .-active .TEMPforum_post_title").val();
+                var TEMPforum_post_time = $("#sec3-2box .innerboxright .-active .TEMPforum_post_time").val();
+                var TEMPguide_no = $("#sec3-2box .innerboxright .-active .TEMPguide_no").val();
+                var TEMPmem_realname = $("#sec3-2box .innerboxright .-active .TEMPmem_realname").val();
+                var TEMPmem_id = $("#sec3-2box .innerboxright .-active .TEMPmem_id").val();
+                var TEMPmem_badge1 = $("#sec3-2box .innerboxright .-active .TEMPmem_badge1").val();
+                var TEMPmem_badge2 = $("#sec3-2box .innerboxright .-active .TEMPmem_badge2").val();
+                var TEMPmem_badge3 = $("#sec3-2box .innerboxright .-active .TEMPmem_badge3").val();
+                var TEMPforum_reply = $("#sec3-2box .innerboxright .-active .TEMPforum_reply").val();
+                var TEMPforum_keep = $("#sec3-2box .innerboxright .-active .TEMPforum_keep").val();
+                var TEMPforum_replytime = $("#sec3-2box .innerboxright .-active .TEMPforum_replytime").val();
+                //渲染
+                $("#sec3-2box .innerboxleft .bigpic img").attr('src',TEMPforum_post_image)
+                $("#sec3-2box .innerboxleft .bigpic div p").text(TEMPforum_post_category)
+                $("#sec3-2box .innerboxleft .theinfor .member_styleA .memberImg img").attr('src',TEMPmem_avator)
+                $("#sec3-2box .innerboxleft .theinfor .member_styleA .memberInfo .memberId").text(TEMPmem_id)
+                $("#sec3-2box .innerboxleft .theinfor .member_styleA .memberInfo .memberBadge .memberBadgeIcon").eq(0).find("img").attr('src',TEMPmem_badge1)
+                $("#sec3-2box .innerboxleft .theinfor .member_styleA .memberInfo .memberBadge .memberBadgeIcon").eq(1).find("img").attr('src',TEMPmem_badge2)
+                $("#sec3-2box .innerboxleft .theinfor .member_styleA .memberInfo .memberBadge .memberBadgeIcon").eq(2).find("img").attr('src',TEMPmem_badge3)
+                $("#sec3-2box .innerboxleft .theinfor .forumtitle h3").text(TEMPforum_post_title)
+                $("#sec3-2box .innerboxleft .theinfor .forumtitle span").text(TEMPforum_post_time)
+                $("#sec3-2box .innerboxleft .forumtext p").text(TEMPforum_post_innertext)
+                if (TEMPmem_realname){
+                    $("#sec3-2box .innerboxleft .theinfor .member_styleA .memberInfo .certification .a").show();
+                }   else    {
+                    $("#sec3-2box .innerboxleft .theinfor .member_styleA .memberInfo .certification .a").hide();
+                }
+                if (TEMPguide_no){
+                    $("#sec3-2box .innerboxleft .theinfor .member_styleA .memberInfo .certification .b").show();
+                }   else    {
+                    $("#sec3-2box .innerboxleft .theinfor .member_styleA .memberInfo .certification .b").hide();
+                }
+                $("#sec3-2box .innerboxleft .sub .keepicon + div p").text(TEMPforum_keep)
+                $("#sec3-2box .innerboxleft .sub .replyicon + div p").text(TEMPforum_reply)
+                $("#sec3-2box .innerboxleft .sub .replyicon + div span").text(`最後回覆於${TEMPforum_replytime}`)
+            },
+                gotoFORUM: function(){
+                    location.href=`./forum-comment.html?forum_post_no=${$("#sec3-2box .innerboxright .-active .TEMPforum_post_no").val()}`
+                },
+
+                CHECKIMG: function(){
+                    
+                    let IMGarray = $(".memberImg img")
+                    for(var t=0 ; t<IMGarray.length ; t++){
+                        if(IMGarray.eq(t).width() > IMGarray.eq(t).height()){
+                            IMGarray.eq(t).addClass('wide')
+                            IMGarray.eq(t).removeClass('tall')
+                        }   else    {
+                            IMGarray.eq(t).addClass('tall')
+                            IMGarray.eq(t).removeClass('wide')
+                        }
+                    }
+                }
+            },
+            updated() {
+                this.renderForumData();
+
+                let IMGarray = $(".memberImg img")
+                setTimeout(function(){
+                    for(var t=0 ; t<IMGarray.length ; t++){
+                if(IMGarray.eq(t).width() > IMGarray.eq(t).height() || isNaN(IMGarray.eq(t).width()) || isNaN(IMGarray.eq(t).height())){
+                            IMGarray.eq(t).addClass('wide')
+                        }   else    {
+                            IMGarray.eq(t).addClass('tall')
+                        }
+                    }
+                },200)
+            },
+        });
+        let vProduct = new Vue({
+            el: "#sec4box",
+            data: {
+                Product: [],
+            },
+            created() {
+                axios.get('./phpForConnect/frontstageindexProduct.php').then(res => {
+                this.Product = res.data; 
+                })
+            },
+            methods:{
+                ExchangePRO: function(e){
+                    // 先暫存點擊的資料
+                    var tempNO = $(e.target.parentNode.parentNode).find(".proNO").val();
+                    var tempNAME = $(e.target.parentNode.parentNode).find(".proNAME").val();
+                    var tempIMG = $(e.target.parentNode.parentNode).find(".proIMG").val();
+                    var tempPRICE = $(e.target.parentNode.parentNode).find(".proPRICE").val();
+                    var tempDESC = $(e.target.parentNode.parentNode).find(".proDESC").val();
+                    var tempSOLD = $(e.target.parentNode.parentNode).find(".proSOLD").val();
+                    // 轉換資料,小圖的資料便原大圖資料
+                    $(e.target.parentNode.parentNode).find(".proNO").val($(".boxbig input.proNO").val());
+                    $(e.target.parentNode.parentNode).find(".proNAME").val($(".boxbig input.proNAME").val());
+                    $(e.target.parentNode.parentNode).find(".proIMG").val($(".boxbig input.proIMG").val());
+                    $(e.target.parentNode.parentNode).find(".proPRICE").val($(".boxbig input.proPRICE").val());
+                    $(e.target.parentNode.parentNode).find(".proDESC").val($(".boxbig input.proDESC").val());
+                    $(e.target.parentNode.parentNode).find(".proSOLD").val($(".boxbig input.proSOLD").val());
+                    // 小圖變換成原大圖資料
+                    $(e.target.parentNode.parentNode).find(".propicsmall").find("img").attr('src',$(e.target.parentNode.parentNode).find(".proIMG").val());
+                    $(e.target.parentNode.parentNode).find(".protitle").find("p").text($(e.target.parentNode.parentNode).find(".proNAME").val());
+                    // // 大圖去存取原小圖的temp
+                    $(".boxbig input.proNO").val(tempNO)
+                    $(".boxbig input.proNAME").val(tempNAME)
+                    $(".boxbig input.proIMG").val(tempIMG)
+                    $(".boxbig input.proPRICE").val(tempPRICE)
+                    $(".boxbig input.proDESC").val(tempDESC)
+                    $(".boxbig input.proSoLD").val(tempSOLD)
+                    // 大圖變換成員小圖資料
+                    $(".boxbig .picbig .propicbig img").attr('src',$(".boxbig input.proIMG").val())
+                    $(".boxbig .prodesc .protitle h3").text($(".boxbig input.proNAME").val())
+                    $(".boxbig .prodesc .prosubtitle p").text($(".boxbig input.proDESC").val())
+                    $(".boxbig .prodesc .proprice p").text('$'+$(".boxbig input.proPRICE").val())
+                
+                },
+                gotoPRODUCT: function(){
+                    location.href=`./product_info.html?productNo=${$(".boxbig input.proNO").val()}`
+                },
+            },
+        });
+    </script>
+
+    <script>
+    </script>
+    <script src="./js/FrontstageIndex.js" ></script>
+
+</body>
+</html>
