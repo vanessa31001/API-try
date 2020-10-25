@@ -14,24 +14,18 @@
                 success(data){
                     console.log($(data));
 
-                    let theData = $(data).find('records').find('locations').eq(0).find('location').eq(0).find('time').eq(0).find('elementValue').eq(0);
+                    let weatherElement = data.records.locations[0].location[7].weatherElement[5].time[0].elementValue[0].value;
+                    console.log(weatherElement);
 
-                    console.log(theData);
-
-
-                    // let weatherElement = $(data).records.locations[0].location[0].weatherElement[1].time[0].elementValue[0].value;
-                    // console.log($(weatherElement));
+                    $('#feedback').append(weatherElement);
+                    alert(weatherElement);
                 },
                 error(){
-                    alert('NO~');
+                    // alert('NO~');
+                    $('#feedback').append('<p>An error occured.</p>');
                 },
             });
         });
-        let AreaDataArray = ['N1'];
-        function RenderWeather(AreaData){
-            // 天氣敘述
-            // $id('weatherp').innerHTML = AreaData.records.locations[0].location[0].weatherElement[5].time[0].elementValue[0].value
-        }
 
     </script>
 </head>
@@ -44,6 +38,7 @@
             <h3></h3>
             <h4></h4>
             <a></a>
+            <p id="feedback"></p>
         </div>
     </div>
 </body>

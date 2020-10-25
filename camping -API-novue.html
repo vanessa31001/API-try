@@ -152,9 +152,29 @@
 
     <script src="https://unpkg.com/jquery"></script>
 
+<script>
+    $(document).ready(function(){
+        $.ajax({
+            url: 'https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-071?Authorization=CWB-FA772AA0-8D0C-4FEF-B569-7DE1EEF2453D&format=JSON&elementName=MinT,MaxT,PoP12h,T,RH,Wx,WeatherDescription',
+            type: 'GET',
+            dataType: 'json',
+            success(data){
+                console.log($(data));
 
+                let weatherElement = data.records.locations[0].location[7].weatherElement[5].time[0].elementValue[0].value;
+                console.log(weatherElement);
 
-    <script>
+                $('#weatherp').append(weatherElement);
+            },
+            error(){
+                // alert('NO~');
+            },
+        });
+    });
+
+</script>
+
+    <!-- <script>
         //新北新店
         let N1data;
         $(function (N1) {
@@ -165,10 +185,15 @@
                 error: function (e) {
                     // console.log('oh no');
                 },
-                success: function (N1data) {
-                    // console.log(N1)
-                    N1data= N1;
-                }
+                success(data){
+                    console.log($(data));
+
+                    let weatherElement = data.records.locations[0].location[7].weatherElement[5].time[0].elementValue[0].value;
+                    console.log(weatherElement);
+
+                    $('#weatherp').append(weatherElement);
+                    alert(weatherElement);
+                },
             });
         });
 
@@ -193,10 +218,12 @@
 
         function RenderWeather(AreaData){
             // 天氣敘述
-            $id('weatherp').innerHTML = AreaData.records.locations[0].location[0].weatherElement[5].time[0].elementValue[0].value
+            $('#weatherp').append(weatherElement);
+
+            // $id('weatherp').innerHTML = AreaData.records.locations[0].location[0].weatherElement[5].time[0].elementValue[0].value
         }
 
-    </script>
+    </script> -->
     
     
     
