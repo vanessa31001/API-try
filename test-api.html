@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>	臺灣各縣市鄉鎮未來1週逐12小時天氣預報</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+          $(document).ready(function(){
+            $.ajax({
+                url: 'https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-071?Authorization=CWB-FA772AA0-8D0C-4FEF-B569-7DE1EEF2453D&format=JSON&elementName=MinT,MaxT,PoP12h,T,RH,Wx,WeatherDescription',
+                type: 'GET',
+                dataType: 'json',
+                success(data){
+                    console.log($(data));
+
+                    let theData = $(data).find('records').find('locations').eq(0).find('location').eq(0).find('time').eq(0).find('elementValue').eq(0);
+
+                    console.log(theData);
+
+
+                    // let weatherElement = $(data).records.locations[0].location[0].weatherElement[1].time[0].elementValue[0].value;
+                    // console.log($(weatherElement));
+                },
+                error(){
+                    alert('NO~');
+                },
+            });
+        });
+        let AreaDataArray = ['N1'];
+        function RenderWeather(AreaData){
+            // 天氣敘述
+            // $id('weatherp').innerHTML = AreaData.records.locations[0].location[0].weatherElement[5].time[0].elementValue[0].value
+        }
+
+    </script>
+</head>
+<body>
+    <div id="" data-role="page">
+        <div data-role="header">
+            <h2>自動氣象站-氣象觀測資料</h2>
+        </div>
+        <div data-role="mainSection">
+            <h3></h3>
+            <h4></h4>
+            <a></a>
+        </div>
+    </div>
+</body>
+</html>

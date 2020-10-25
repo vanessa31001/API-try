@@ -104,8 +104,9 @@
         
                             <!-- 氣象描述 -->
                             <div class="weatherdesc">
-                                <p id="weatherp" class="level1">陰天。降雨機率 10%。溫度攝氏22至24度。
-                                    舒適。東北風 風速2級(每秒3公尺)。相對濕度74%。</p><br>
+                                <p id="weatherp" class="level1"></p><br>
+                                <!-- <p id="weatherp" class="level1">陰天。降雨機率 10%。溫度攝氏22至24度。
+                                    舒適。東北風 風速2級(每秒3公尺)。相對濕度74%。</p><br> -->
                                 <div class="level1">更新時間：<span class="nowTime">年月日時分秒</span>
                                 </div>
                             </div>
@@ -172,61 +173,27 @@
         });
 
         //桃園大溪
-        let N2data;
-        $(function (N2) {
-            $.ajax({
-                type: "GET",
-                url: "https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-071?Authorization=CWB-FA772AA0-8D0C-4FEF-B569-7DE1EEF2453D&format=JSON&locationName=%E5%8C%97%E6%8A%95%E5%8D%80&elementName=MinT,MaxT,Wind,Td,PoP12h,T,RH,Wx,WeatherDescription",
-                dataType: "json",
-                error: function (e) {
-                    // console.log('oh no');
-                },
-                success: function (N2data) {
-                    // console.log(N1)
-                    N2data= N2;
-                }
-            });
-        });
+        // let N2data;
+        // $(function (N2) {
+        //     $.ajax({
+        //         type: "GET",
+        //         url: "https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-071?Authorization=CWB-FA772AA0-8D0C-4FEF-B569-7DE1EEF2453D&format=JSON&locationName=%E5%8C%97%E6%8A%95%E5%8D%80&elementName=MinT,MaxT,Wind,Td,PoP12h,T,RH,Wx,WeatherDescription",
+        //         dataType: "json",
+        //         error: function (e) {
+        //             console.log('No~');
+        //         },
+        //         success: function (N2data) {
+        //             console.log(N2)
+        //             N2data= N2;
+        //         }
+        //     });
+        // });
 
-        let AreaDataArray = ["N1data", "N2data"];
+        let AreaDataArray = ["N1data"];
 
         function RenderWeather(AreaData){
             // 天氣敘述
-            // $id('weatherp').innerHTML = AreaData.records.locations[0].location[0].weatherElement[5].time[0].elementValue[0].value
-            // 渲染日期 
-            // $id('date1').innerText = AreaData.records.locations[0].location[0].weatherElement[0].time[1].startTime.slice(8,10);
-            // $id('date2').innerText = AreaData.records.locations[0].location[0].weatherElement[0].time[3].startTime.slice(8,10);
-            // $id('date3').innerText = AreaData.records.locations[0].location[0].weatherElement[0].time[5].startTime.slice(8,10);
-            // $id('date4').innerText = AreaData.records.locations[0].location[0].weatherElement[0].time[7].startTime.slice(8,10);
-            // $id('date5').innerText = AreaData.records.locations[0].location[0].weatherElement[0].time[9].startTime.slice(8,10);
-            // $id('date6').innerText = AreaData.records.locations[0].location[0].weatherElement[0].time[11].startTime.slice(8,10);
-            // $id('date7').innerText = AreaData.records.locations[0].location[0].weatherElement[0].time[13].startTime.slice(8,10);
-            // 渲染早上平均溫度
-            // $id('Ttop1').innerText = AreaData.records.locations[0].location[0].weatherElement[1].time[1].elementValue[0].value + '°C'
-            // $id('Ttop2').innerText = AreaData.records.locations[0].location[0].weatherElement[1].time[3].elementValue[0].value + '°C'
-            // $id('Ttop3').innerText = AreaData.records.locations[0].location[0].weatherElement[1].time[5].elementValue[0].value + '°C'
-            // $id('Ttop4').innerText = AreaData.records.locations[0].location[0].weatherElement[1].time[7].elementValue[0].value + '°C'
-            // $id('Ttop5').innerText = AreaData.records.locations[0].location[0].weatherElement[1].time[9].elementValue[0].value + '°C'
-            // $id('Ttop6').innerText = AreaData.records.locations[0].location[0].weatherElement[1].time[11].elementValue[0].value + '°C'
-            // $id('Ttop7').innerText = AreaData.records.locations[0].location[0].weatherElement[1].time[13].elementValue[0].value + '°C'
-            // 渲染晚上平均溫度
-            // $id('Tbutton1').innerText = AreaData.records.locations[0].location[0].weatherElement[1].time[2].elementValue[0].value + '°C'
-            // $id('Tbutton2').innerText = AreaData.records.locations[0].location[0].weatherElement[1].time[4].elementValue[0].value + '°C'
-            // $id('Tbutton3').innerText = AreaData.records.locations[0].location[0].weatherElement[1].time[6].elementValue[0].value + '°C'
-            // $id('Tbutton4').innerText = AreaData.records.locations[0].location[0].weatherElement[1].time[8].elementValue[0].value + '°C'
-            // $id('Tbutton5').innerText = AreaData.records.locations[0].location[0].weatherElement[1].time[10].elementValue[0].value + '°C'
-            // $id('Tbutton6').innerText = AreaData.records.locations[0].location[0].weatherElement[1].time[12].elementValue[0].value + '°C'
-            // if (AreaData.records.locations[0].location[0].weatherElement[1].length === 15) {
-            //     $id('Tbutton7').innerText = AreaData.records.locations[0].location[0].weatherElement[1].time[14].elementValue[0].value + '°C'
-            // }   else    {
-            //     $id('Tbutton7').innerText = AreaData.records.locations[0].location[0].weatherElement[1].time[13].elementValue[0].value + '°C'
-            // }
-            // 渲染當下溫度、最低溫、最高溫、降雨機率、相對濕度
-            // $id('NowT').innerText = AreaData.records.locations[0].location[0].weatherElement[1].time[0].elementValue[0].value + '°C'
-            // $id('MinT').innerText = AreaData.records.locations[0].location[0].weatherElement[4].time[0].elementValue[0].value + '°C'
-            // $id('MaxT').innerText = AreaData.records.locations[0].location[0].weatherElement[6].time[0].elementValue[0].value + '°C'
-            $id('PoP').innerText = AreaData.records.locations[0].location[0].weatherElement[0].time[0].elementValue[0].value + '%'
-            $id('RH').innerText = AreaData.records.locations[0].location[0].weatherElement[2].time[0].elementValue[0].value + '%'
+            $id('weatherp').innerHTML = AreaData.records.locations[0].location[0].weatherElement[5].time[0].elementValue[0].value
         }
 
     </script>
