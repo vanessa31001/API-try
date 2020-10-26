@@ -71,19 +71,46 @@
     <script src="cities.js"></script>
 
     <script>
+        Vue.component('Select', {
+            props: ['value', 'options', 'label'],
+            computed: {
+            index: {
+                get() {
+                return this.value;
+                },
+                set(val) {
+                this.$emit("input", val);
+                }
+            }
+            },
+            methods: {
+            optionText(item) {    	
+                if( this.label === 'text' ) {
+                return item["text"];
+                }
+                else {
+                return eval("item." + this.label);
+                }
+                
+            }
+            },
+            template: 
+            `  	
+            <select class="selectstyle" v-model="index">    	
+                <option v-for="(item, index) in options" :value="index">{{optionText(item)}}</option>
+            </select>    	
+            `
+        });
         
 
         new Vue({
             el: "#app",
-            data() {
-                return{
-                weather_data: null
-                }
-            },
             data: {
             cityIndex: 0,
             areaIndex: 0,
+            NowT:0,
             },
+
             watch: {
             areaIndex() {
                 this.cityIndex = 0;
@@ -101,15 +128,13 @@
 
             mounted() {
                 axios.get('https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-071?Authorization=CWB-FA772AA0-8D0C-4FEF-B569-7DE1EEF2453D&format=JSON&locationName=%E6%96%B0%E5%BA%97%E5%8D%80&elementName=MinT,MaxT,Wind,Td,PoP12h,T,RH,Wx,WeatherDescription')
-
-                .then(data => {
-                console.log(data)
-
-
-                this.weatherElement = data.records.locations[0].location[7].weatherElement[5].time[0].elementValue[0].value;
-                console.log(weatherElement);
-                
-            })
+                .then(function(data){
+                    this.NowT=data.data.records.locations[0].location[0].weatherElement[1].time[0].elementValue[0].value
+                    
+                    // console.log(data.data.records.locations[0].location[0].weatherElement[1].time[0].elementValue[0].value)
+                }).catch(function(erroe){
+                    console.log('error')
+                })
             },
             template: 
             `
@@ -118,12 +143,22 @@
             <div class="weather">
                 <div class="weathernow">
                     <!-- 地區搜尋 -->
-
+                    <div class="search_area">
+                        <p>
+                            <label class="third_title" for="">選擇地區:</label>
+                            <Select v-model="areaIndex" :options="spots" label="area" ></Select>
+                        </p>
+                        <p>
+                            <label class="third_title" for="">選擇營地:</label>
+                            <Select v-model="cityIndex" :options="cities" label="text"></Select>
+                        </p>
+                        <!--<div>{{ this.areaIndex }} - {{ this.cityIndex }} </div>-->
+                    </div>
                         
                     <!-- 溫度、降雨、濕度 -->
                     <div class="infos">
                         <div class="NowT infosbox">
-                            <p class="title">22oC</p>
+                            <p class="title" id="NowT">{{ NowT }}</p>
                             <div class="TtoT">
                                 <span id=MinT>19oC</span>~
                                 <span id=MaxT>23oC</span>
@@ -131,7 +166,7 @@
                         </div>
                         <div class="PoP infosbox">
                             降雨機率
-                            <p id="PoP">{{}}</p>
+                            <p id="PoP">20%</p>
                         </div>
                         <div class="RH infosbox">
                             相對溼度
@@ -142,38 +177,38 @@
                     <div class="weatherweek">
                         <div class="day1 week">
                             <p class="day" id="date1">21</p>
-                            <p class="temp" id="LowT">20oC</p>
-                            <p class="temp" id="HightT">22oC</p>
+                            <p class="temp" id="Ttop1">20oC</p>
+                            <p class="temp" id="Tlow1">22oC</p>
                         </div>
                         <div class="day2 week">
                             <p class="day" id="date2">22</p>
-                            <p class="temp" id="LowT">20oC</p>
-                            <p class="temp" id="HightT">22oC</p>
+                            <p class="temp" id="Ttop2">20oC</p>
+                            <p class="temp" id="Tlow2">22oC</p>
                         </div>
                         <div class="day3 week">
                             <p class="day" id="date3">23</p>
-                            <p class="temp" id="LowT">20oC</p>
-                            <p class="temp" id="HightT">22oC</p>
+                            <p class="temp" id="Ttop3">20oC</p>
+                            <p class="temp" id="Tlow3">22oC</p>
                         </div>
                         <div class="day4 week">
                             <p class="day" id="date4">24</p>
-                            <p class="temp" id="LowT">20oC</p>
-                            <p class="temp" id="HightT">22oC</p>
+                            <p class="temp" id="Ttop4">20oC</p>
+                            <p class="temp" id="Tlow4">22oC</p>
                         </div>
                         <div class="day5 week">
                             <p class="day" id="date5">25</p>
-                            <p class="temp" id="LowT">20oC</p>
-                            <p class="temp" id="HightT">22oC</p>
+                            <p class="temp" id="Ttop5">20oC</p>
+                            <p class="temp" id="Tlow5">22oC</p>
                         </div>
                         <div class="day6 week">
                             <p class="day" id="date6">26</p>
-                            <p class="temp" id="LowT">20oC</p>
-                            <p class="temp" id="HightT">22oC</p>
+                            <p class="temp" id="Ttop6">20oC</p>
+                            <p class="temp" id="Tlow6">22oC</p>
                         </div>
                         <div class="day7 week">
                             <p class="day" id="date7">27</p>
-                            <p class="temp" id="LowT">20oC</p>
-                            <p class="temp" id="HightT">22oC</p>
+                            <p class="temp" id="Ttop7">20oC</p>
+                            <p class="temp" id="Tlow7">22oC</p>
                         </div>
                     </div>
 
@@ -181,7 +216,8 @@
 
                     <!-- 氣象描述 -->
                     <div class="weatherdesc">
-                        <p id="weatherp" class="level1">{{}}</p><br>
+                        <p id="weatherp" class="level1">陰天。降雨機率 10%。溫度攝氏22至24度。
+                            舒適。東北風 風速2級(每秒3公尺)。相對濕度74%。</p><br>
                         <div class="level1">更新時間：<span class="nowTime">年月日時分秒</span>
                         </div>
                     </div>
@@ -192,7 +228,7 @@
     </script>
 
 
-    <script>
+    <!-- <script>
         let N1data;
         $(function (N1) {
             $.ajax({
@@ -226,7 +262,7 @@
         });
 
 
-    </script>
+    </script> -->
 
 
 </body>

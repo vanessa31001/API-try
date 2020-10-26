@@ -46,10 +46,10 @@
                             <!-- 溫度、降雨、濕度 -->
                             <div class="infos">
                                 <div class="NowT infosbox">
-                                    <p class="title">22oC</p>
+                                    <p class="title" id="NowT"></p>
                                     <div class="TtoT">
-                                        <span id=MinT>19oC</span>~
-                                        <span id=MaxT>23oC</span>
+                                        <span id=MinT></span>°C~
+                                        <span id=MaxT></span>°C
                                     </div>
                                 </div>
                                 <div class="PoP infosbox">
@@ -64,39 +64,39 @@
                             <!-- 未來一周 -->
                             <div class="weatherweek">
                                 <div class="day1 week">
-                                    <p class="day" id="date1">21</p>
-                                    <p class="temp" id="LowT">20oC</p>
-                                    <p class="temp" id="HightT">22oC</p>
+                                    <p class="day" id="date1"></p>
+                                    <p class="temp" id="Ttop1">oC</p>
+                                    <p class="temp" id="Tlow1">oC</p>
                                 </div>
                                 <div class="day2 week">
-                                    <p class="day" id="date2">22</p>
-                                    <p class="temp" id="LowT">20oC</p>
-                                    <p class="temp" id="HightT">22oC</p>
+                                    <p class="day" id="date2"></p>
+                                    <p class="temp" id="Ttop2">oC</p>
+                                    <p class="temp" id="Tlow2">oC</p>
                                 </div>
                                 <div class="day3 week">
-                                    <p class="day" id="date3">23</p>
-                                    <p class="temp" id="LowT">20oC</p>
-                                    <p class="temp" id="HightT">22oC</p>
+                                    <p class="day" id="date3"></p>
+                                    <p class="temp" id="Ttop3">oC</p>
+                                    <p class="temp" id="Tlow3">oC</p>
                                 </div>
                                 <div class="day4 week">
-                                    <p class="day" id="date4">24</p>
-                                    <p class="temp" id="LowT">20oC</p>
-                                    <p class="temp" id="HightT">22oC</p>
+                                    <p class="day" id="date4"></p>
+                                    <p class="temp" id="Ttop4">oC</p>
+                                    <p class="temp" id="Tlow4">oC</p>
                                 </div>
                                 <div class="day5 week">
-                                    <p class="day" id="date5">25</p>
-                                    <p class="temp" id="LowT">20oC</p>
-                                    <p class="temp" id="HightT">22oC</p>
+                                    <p class="day" id="date5"></p>
+                                    <p class="temp" id="Ttop5">oC</p>
+                                    <p class="temp" id="Tlow5">oC</p>
                                 </div>
                                 <div class="day6 week">
-                                    <p class="day" id="date6">26</p>
-                                    <p class="temp" id="LowT">20oC</p>
-                                    <p class="temp" id="HightT">22oC</p>
+                                    <p class="day" id="date6"></p>
+                                    <p class="temp" id="Ttop6">oC</p>
+                                    <p class="temp" id="Tlow6">oC</p>
                                 </div>
                                 <div class="day7 week">
-                                    <p class="day" id="date7">27</p>
-                                    <p class="temp" id="LowT">20oC</p>
-                                    <p class="temp" id="HightT">22oC</p>
+                                    <p class="day" id="date7"></p>
+                                    <p class="temp" id="Ttop7">oC</p>
+                                    <p class="temp" id="Tlow7">oC</p>
                                 </div>
                             </div>
         
@@ -155,16 +155,80 @@
 <script>
     $(document).ready(function(){
         $.ajax({
-            url: 'https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-071?Authorization=CWB-FA772AA0-8D0C-4FEF-B569-7DE1EEF2453D&format=JSON&elementName=MinT,MaxT,PoP12h,T,RH,Wx,WeatherDescription',
+            url: 'https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-071?Authorization=CWB-FA772AA0-8D0C-4FEF-B569-7DE1EEF2453D&format=JSON&locationName=%E6%96%B0%E5%BA%97%E5%8D%80&elementName=MinT,MaxT,Wind,Td,PoP12h,T,RH,Wx,WeatherDescription',
             type: 'GET',
             dataType: 'json',
             success(data){
                 console.log($(data));
 
-                let weatherElement = data.records.locations[0].location[7].weatherElement[5].time[0].elementValue[0].value;
-                console.log(weatherElement);
+                let NowT = data.records.locations[0].location[0].weatherElement[1].time[0].elementValue[0].value;
+                let MinT = data.records.locations[0].location[0].weatherElement[4].time[0].elementValue[0].value;
+                let MaxT = data.records.locations[0].location[0].weatherElement[6].time[0].elementValue[0].value;
+                let PoP = data.records.locations[0].location[0].weatherElement[0].time[0].elementValue[0].value;
+                let RH = data.records.locations[0].location[0].weatherElement[2].time[0].elementValue[0].value;
+                let weatherp = data.records.locations[0].location[0].weatherElement[5].time[0].elementValue[0].value;
 
-                $('#weatherp').append(weatherElement);
+
+                let date1 = data.records.locations[0].location[0].weatherElement[0].time[1].startTime.slice(8,10);
+                let date2 = data.records.locations[0].location[0].weatherElement[0].time[3].startTime.slice(8,10);
+                let date3 = data.records.locations[0].location[0].weatherElement[0].time[5].startTime.slice(8,10);
+                let date4 = data.records.locations[0].location[0].weatherElement[0].time[7].startTime.slice(8,10);
+                let date5 = data.records.locations[0].location[0].weatherElement[0].time[9].startTime.slice(8,10);
+                let date6 = data.records.locations[0].location[0].weatherElement[0].time[11].startTime.slice(8,10);
+                let date7 = data.records.locations[0].location[0].weatherElement[0].time[13].startTime.slice(8,10);
+                
+
+                let Ttop1 = data.records.locations[0].location[0].weatherElement[1].time[1].elementValue[0].value;
+                let Ttop2 = data.records.locations[0].location[0].weatherElement[1].time[3].elementValue[0].value;
+                let Ttop3 = data.records.locations[0].location[0].weatherElement[1].time[5].elementValue[0].value;
+                let Ttop4 = data.records.locations[0].location[0].weatherElement[1].time[7].elementValue[0].value;
+                let Ttop5 = data.records.locations[0].location[0].weatherElement[1].time[9].elementValue[0].value;
+                let Ttop6 = data.records.locations[0].location[0].weatherElement[1].time[11].elementValue[0].value;
+                let Ttop7 = data.records.locations[0].location[0].weatherElement[1].time[13].elementValue[0].value;
+
+                let Tlow1 = data.records.locations[0].location[0].weatherElement[1].time[2].elementValue[0].value;
+                let Tlow2 = data.records.locations[0].location[0].weatherElement[1].time[4].elementValue[0].value;
+                let Tlow3 = data.records.locations[0].location[0].weatherElement[1].time[6].elementValue[0].value;
+                let Tlow4 = data.records.locations[0].location[0].weatherElement[1].time[8].elementValue[0].value;
+                let Tlow5 = data.records.locations[0].location[0].weatherElement[1].time[10].elementValue[0].value;
+                let Tlow6 = data.records.locations[0].location[0].weatherElement[1].time[12].elementValue[0].value;
+                // let Tlow7 = data.records.locations[0].location[7].weatherElement[1].time[14].elementValue[0].value;
+                
+                
+
+                $('#NowT').append(NowT);
+                // $('#NowT').innerText = NowT;
+                $('#MinT').append(MinT);
+                $('#MaxT').append(MaxT);
+                $('#PoP').append(PoP);
+                $('#RH').append(RH);
+                $('#weatherp').append(weatherp);
+
+                $('#date1').append(date1);
+                $('#date2').append(date2);
+                $('#date3').append(date3);
+                $('#date4').append(date4);
+                $('#date5').append(date5);
+                $('#date6').append(date6);
+                $('#date7').append(date7);
+
+                $('#Ttop1').append(Ttop1);
+                $('#Ttop2').append(Ttop2);
+                $('#Ttop3').append(Ttop3);
+                $('#Ttop4').append(Ttop4);
+                $('#Ttop5').append(Ttop5);
+                $('#Ttop6').append(Ttop6);
+                $('#Ttop7').append(Ttop7);
+
+                $('#Tlow1').append(Tlow1);
+                $('#Tlow2').append(Tlow2);
+                $('#Tlow3').append(Tlow3);
+                $('#Tlow4').append(Tlow4);
+                $('#Tlow5').append(Tlow5);
+                $('#Tlow6').append(Tlow6);
+                // $('#Tlow7').append(Tlow7);
+
+
             },
             error(){
                 // alert('NO~');
