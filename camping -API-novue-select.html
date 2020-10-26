@@ -163,86 +163,26 @@
             url: 'https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-071?Authorization=CWB-FA772AA0-8D0C-4FEF-B569-7DE1EEF2453D&format=JSON&locationName=%E6%96%B0%E5%BA%97%E5%8D%80&elementName=MinT,MaxT,Wind,Td,PoP12h,T,RH,Wx,WeatherDescription',
             type: 'GET',
             dataType: 'json',
-            success(data){
-                console.log($(data));
-
-                let NowT = data.records.locations[0].location[0].weatherElement[1].time[0].elementValue[0].value+ '°C';
-                let MinT = data.records.locations[0].location[0].weatherElement[4].time[0].elementValue[0].value+ '°C';
-                let MaxT = data.records.locations[0].location[0].weatherElement[6].time[0].elementValue[0].value+ '°C';
-                let PoP = data.records.locations[0].location[0].weatherElement[0].time[0].elementValue[0].value+ '%';
-                let RH = data.records.locations[0].location[0].weatherElement[2].time[0].elementValue[0].value+ '%';
-                let weatherp = data.records.locations[0].location[0].weatherElement[5].time[0].elementValue[0].value;
-
-
-                let date1 = data.records.locations[0].location[0].weatherElement[0].time[0].startTime.slice(8,10);
-                let date2 = data.records.locations[0].location[0].weatherElement[0].time[2].startTime.slice(8,10);
-                let date3 = data.records.locations[0].location[0].weatherElement[0].time[4].startTime.slice(8,10);
-                let date4 = data.records.locations[0].location[0].weatherElement[0].time[6].startTime.slice(8,10);
-                let date5 = data.records.locations[0].location[0].weatherElement[0].time[8].startTime.slice(8,10);
-                let date6 = data.records.locations[0].location[0].weatherElement[0].time[10].startTime.slice(8,10);
-                let date7 = data.records.locations[0].location[0].weatherElement[0].time[12].startTime.slice(8,10);
-                
-
-                let Ttop1 = data.records.locations[0].location[0].weatherElement[6].time[1].elementValue[0].value+ '°C';
-                let Ttop2 = data.records.locations[0].location[0].weatherElement[6].time[3].elementValue[0].value+ '°C';
-                let Ttop3 = data.records.locations[0].location[0].weatherElement[6].time[5].elementValue[0].value+ '°C';
-                let Ttop4 = data.records.locations[0].location[0].weatherElement[6].time[7].elementValue[0].value+ '°C';
-                let Ttop5 = data.records.locations[0].location[0].weatherElement[6].time[9].elementValue[0].value+ '°C';
-                let Ttop6 = data.records.locations[0].location[0].weatherElement[6].time[11].elementValue[0].value+ '°C';
-                let Ttop7 = data.records.locations[0].location[0].weatherElement[6].time[13].elementValue[0].value+ '°C';
-
-                let Tlow1 = data.records.locations[0].location[0].weatherElement[4].time[0].elementValue[0].value+ '°C';
-                let Tlow2 = data.records.locations[0].location[0].weatherElement[4].time[2].elementValue[0].value+ '°C';
-                let Tlow3 = data.records.locations[0].location[0].weatherElement[4].time[4].elementValue[0].value+ '°C';
-                let Tlow4 = data.records.locations[0].location[0].weatherElement[4].time[6].elementValue[0].value+ '°C';
-                let Tlow5 = data.records.locations[0].location[0].weatherElement[4].time[8].elementValue[0].value+ '°C';
-                let Tlow6 = data.records.locations[0].location[0].weatherElement[4].time[10].elementValue[0].value+ '°C';
-                let Tlow7 = data.records.locations[0].location[0].weatherElement[4].time[12].elementValue[0].value+ '°C';
-               
-                let now = new Date(Date.now());
-                $('#nowTime').append(now);
-
-                $('#NowT').append(NowT);
-                $('#MinT').append(MinT);
-                $('#MaxT').append(MaxT);
-                $('#PoP').append(PoP);
-                $('#RH').append(RH);
-                $('#weatherp').append(weatherp);
-
-                $('#date1').append(date1);
-                $('#date2').append(date2);
-                $('#date3').append(date3);
-                $('#date4').append(date4);
-                $('#date5').append(date5);
-                $('#date6').append(date6);
-                $('#date7').append(date7);
-
-                $('#Ttop1').append(Ttop1);
-                $('#Ttop2').append(Ttop2);
-                $('#Ttop3').append(Ttop3);
-                $('#Ttop4').append(Ttop4);
-                $('#Ttop5').append(Ttop5);
-                $('#Ttop6').append(Ttop6);
-                $('#Ttop7').append(Ttop7);
-
-                $('#Tlow1').append(Tlow1);
-                $('#Tlow2').append(Tlow2);
-                $('#Tlow3').append(Tlow3);
-                $('#Tlow4').append(Tlow4);
-                $('#Tlow5').append(Tlow5);
-                $('#Tlow6').append(Tlow6);
-                $('#Tlow7').append(Tlow7);
-
-
-            },
-            error(){
-                // alert('NO~');
-            },
+            error: function (e) {
+                    // console.log('oh no');
+                },
+                success: function (E1) {
+                    // console.log(E1)
+                    E1data = E1 ;
+                },
         });
     });
 
-</script>
 
+    let AreaDataArray = ["E1data"];
+    function RenderWeather(AreaData){
+            // 天氣敘述
+            $id('weatherp').innerHTML = AreaData.records.locations[0].location[0].weatherElement[5].time[0].elementValue[0].value
+    }
+</script>
+<script>
+
+</script>
      
     <!-- 下拉式選單 -->
     <script>
@@ -288,7 +228,6 @@
             for( i = 0; i < area.length; i++ ) {
             master.options[ i ] = new Option( area[i], area[i] );  // Option( text , value );
             }
-        
             master.selectedIndex = 0;
             doNewMaster( master, detail );
         }
@@ -302,6 +241,24 @@
             campSpot[ master.selectedIndex ][ i ] );
             }
         }
+        let data=campSpot[0][0];
+        console.log(c.indexOf(campSpot[0][1]));
+        switch(data){
+            case 'N1data':
+                RenderWeather(N1data);
+            break;
+            case 'N1data':
+                RenderWeather(N1data);
+            break;
+            case 'N1data':
+                RenderWeather(N1data);
+            break;
+            case 'N1data':
+                RenderWeather(N1data);
+            break;
+            
+        };
+
         window.addEventListener('load',doFirst);
     </script>
 

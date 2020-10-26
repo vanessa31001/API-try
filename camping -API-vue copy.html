@@ -129,9 +129,9 @@
             mounted() {
                 axios.get('https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-071?Authorization=CWB-FA772AA0-8D0C-4FEF-B569-7DE1EEF2453D&format=JSON&locationName=%E6%96%B0%E5%BA%97%E5%8D%80&elementName=MinT,MaxT,Wind,Td,PoP12h,T,RH,Wx,WeatherDescription')
                 .then(function(data){
-                    //this.NowT=data.data.records.locations[0].location[0].weatherElement[1].time[0].elementValue[0].value
+                    this.NowT=data.data.records.locations[0].location[0].weatherElement[1].time[0].elementValue[0].value
                     
-                    console.log(data.data.records.locations[0].location[0].weatherElement[1].time[0].elementValue[0].value)
+                    // console.log(data.data.records.locations[0].location[0].weatherElement[1].time[0].elementValue[0].value)
                 }).catch(function(error){
                     console.log('error')
                 })
@@ -158,7 +158,7 @@
                     <!-- 溫度、降雨、濕度 -->
                     <div class="infos">
                         <div class="NowT infosbox">
-                            <p class="title" id="NowT">{{ NowT }}</p>
+                            <p class="title" id="NowT">{{ this.NowT }}</p>
                             <div class="TtoT">
                                 <span id=MinT>19oC</span>~
                                 <span id=MaxT>23oC</span>
