@@ -180,9 +180,7 @@
             $id('weatherp').innerHTML = AreaData.records.locations[0].location[0].weatherElement[5].time[0].elementValue[0].value
     }
 </script>
-<script>
 
-</script>
      
     <!-- 下拉式選單 -->
     <script>
@@ -228,6 +226,7 @@
             for( i = 0; i < area.length; i++ ) {
             master.options[ i ] = new Option( area[i], area[i] );  // Option( text , value );
             }
+        
             master.selectedIndex = 0;
             doNewMaster( master, detail );
         }
@@ -241,24 +240,6 @@
             campSpot[ master.selectedIndex ][ i ] );
             }
         }
-        let data=campSpot[0][0];
-        console.log(c.indexOf(campSpot[0][1]));
-        switch(data){
-            case 'N1data':
-                RenderWeather(N1data);
-            break;
-            case 'N1data':
-                RenderWeather(N1data);
-            break;
-            case 'N1data':
-                RenderWeather(N1data);
-            break;
-            case 'N1data':
-                RenderWeather(N1data);
-            break;
-            
-        };
-
         window.addEventListener('load',doFirst);
     </script>
 
